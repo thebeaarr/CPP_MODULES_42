@@ -10,13 +10,13 @@ class Contact
     std::string first_name;
     std::string last_name;
     std::string nick_name;
-    std::string dark_secret; 
+    std::string dark_secret;
   public:
     void set_first_name(std::string);
     void set_last_name(std::string);
     void set_nick_name(std::string);
     void set_dark_secret(std::string);
-    
+
     std::string get_first_name() const;
     std::string get_last_name() const;
     std::string get_nick_name() const;
@@ -28,6 +28,7 @@ class PhoneBook
 private:
   Contact contact[8];
   int index;
+  int older_one ;
 
 public:
   PhoneBook();

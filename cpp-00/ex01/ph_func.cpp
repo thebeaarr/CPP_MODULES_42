@@ -6,7 +6,7 @@
 /*   By: mlakhdar <mlakhdar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 20:45:59 by mlakhdar          #+#    #+#             */
-/*   Updated: 2025/08/01 23:46:24 by mlakhdar         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:51:33 by mlakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ std::string Contact::get_first_name() const
 {
     return first_name;
 }
-
 
 std::string Contact::get_dark_secret() const
 {
