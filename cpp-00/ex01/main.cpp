@@ -3,18 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlakhdar < mlakhdar@student.1337.ma>       +#+  +:+       +#+        */
+/*   By: mlakhdar <mlakhdar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:37:36 by mlakhdar          #+#    #+#             */
-/*   Updated: 2025/08/01 20:34:36 by mlakhdar         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:32:12 by mlakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.h"
-
-// 80s welcome 
-
-int main()
-{
-
-}
+#include "phonebook.hpp"
