@@ -1,33 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mlakhdar <mlakhdar@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/01 16:37:36 by mlakhdar          #+#    #+#             */
-/*   Updated: 2025/08/02 12:00:49 by mlakhdar         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "phonebook.hpp"
 
-int main()
-{
-  PhoneBook phonebook;
-  Contact contact;
-  for (; 1;)
-  {
-    std::string choice;
-    std::cout << "ADD, SEARCH, EXIT:" << std::endl;
-    std::cin >> choice;
-    if(choice.compare("ADD") == 0)
-      phonebook.add_contact(phonebook.get_contact());
-    else if(choice.compare("SEARCH") == 0)
-      phonebook.search_contact();
-    else if(choice.compare("EXIT") == 0)
-      break;
-    else
-      std::cout << "** INVALID CHOICE" << std::endl;
-  }
+int main() {
+    PhoneBook phonebook;
+
+    while (true) {
+        std::string choice;
+        std::cout << std::endl << "ADD, SEARCH, EXIT:" << std::endl;
+
+        if(!std::getline(std::cin, choice))
+          break;
+
+        if (choice == "ADD") {
+            Contact var;
+            std::string str;
+            // first name
+            std::cout << "first name: ";
+            if(!std::getline(std::cin, str))
+              break;
+            var.set_first_name(str);
+            // last name
+            std::cout << "last name: ";
+            if(!std::getline(std::cin, str))
+              break;
+            var.set_last_name(str);
+
+            // nick name
+            std::cout << "nick name: ";
+            if(!std::getline(std::cin, str))
+              break;
+            var.set_nick_name(str);
+
+            // phone number
+            std::cout << "phone number: ";
+            if(!std::getline(std::cin, str))
+              break;
+            var.set_phone_number(str);
+
+            // dark secret
+            std::cout << "dark secret: ";
+            if(!std::getline(std::cin, str))
+              break;
+            var.set_dark_secret(str);
+            phonebook.add_contact(var);
+        } else if (choice == "SEARCH") {
+            phonebook.search_contact();
+        } else if (choice == "EXIT") {
+            break;
+        } else {
+            std::cerr << "** INVALID CHOICE" << std::endl;
+        }
+    }
+    std::cout << std::endl << "goodbye!" << std::endl;
 }

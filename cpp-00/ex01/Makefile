@@ -1,4 +1,4 @@
-CPP = c++
+CC= c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp ph_func.cpp
@@ -10,7 +10,7 @@ NAME = phonebook
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
