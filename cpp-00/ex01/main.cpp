@@ -6,7 +6,7 @@
 /*   By: mlakhdar <mlakhdar@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 16:37:36 by mlakhdar          #+#    #+#             */
-/*   Updated: 2025/08/02 02:30:56 by mlakhdar         ###   ########.fr       */
+/*   Updated: 2025/08/02 12:00:49 by mlakhdar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,19 @@
 int main()
 {
   PhoneBook phonebook;
-  while(1)
+  Contact contact;
+  for (; 1;)
   {
-    int choice(0);
-    std::cout << "PLEASE ENTER A VALID NUMBER:" << std::endl;
+    std::string choice;
+    std::cout << "ADD, SEARCH, EXIT:" << std::endl;
     std::cin >> choice;
-    switch (choice)
-    {
-    case 1:
+    if(choice.compare("ADD") == 0)
       phonebook.add_contact(phonebook.get_contact());
-      break;
-    case 2:
+    else if(choice.compare("SEARCH") == 0)
       phonebook.search_contact();
+    else if(choice.compare("EXIT") == 0)
       break;
-    case 3:
-      return 0;
-      break;
-    default:
-      std::cout << "unvalid choice" << std::endl;
-      break;
-    }
+    else
+      std::cout << "** INVALID CHOICE" << std::endl;
   }
 }
