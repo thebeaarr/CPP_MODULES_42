@@ -1,5 +1,5 @@
-CC= c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX= c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp ph_func.cpp
 OBJS = $(SRCS:.cpp=.o)
@@ -10,7 +10,7 @@ NAME = phonebook
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
