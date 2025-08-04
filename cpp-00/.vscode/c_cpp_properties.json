@@ -3,18 +3,18 @@
     {
       "name": "linux-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**",
-        "/usr/include",
-        "/usr/include/c++/10",              // adjust '10' for your GCC version
-        "/usr/include/x86_64-linux-gnu/c++/10",
-        "/usr/lib/gcc/x86_64-linux-gnu/10/include"
+        "${workspaceFolder}/**"
       ],
-      "defines": [],
-      "compilerPath": "/usr/bin/g++",
-      "cStandard": "c11",
+      "compilerPath": "/usr/bin/c++",
+      "cStandard": "c90",
       "cppStandard": "c++98",
       "intelliSenseMode": "linux-gcc-x64",
-      "compilerArgs": []
+      "compilerArgs": [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-std=c++98"
+      ]
     }
   ],
   "version": 4

@@ -42,13 +42,13 @@ int main() {
               break;
             var.set_dark_secret(str);
             phonebook.add_contact(var);
-        } else if (choice == "SEARCH") {
+        } else if (choice == "SEARCH")
             phonebook.search_contact();
-        } else if (choice == "EXIT") {
+        else if (choice == "EXIT")
             break;
-        } else {
+        else
             std::cerr << "** INVALID CHOICE" << std::endl;
         }
-    }
+    
     std::cout << std::endl << "goodbye!" << std::endl;
 }

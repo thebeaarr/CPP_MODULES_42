@@ -66,7 +66,7 @@ void Contact::print_contact_content() const
 void PhoneBook::search_contact() const {
         if(index == 0)
     {
-        std::cerr << "PHONEBOOK is empy!!" << std::endl ;
+        std::cerr <<"ERROR" << std::endl ;
         return ;
     }
     for (int i = 0; i < index; i++) {
