@@ -1,18 +1,14 @@
-CXX= c++
-
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = Account.cpp tests.cpp
-
 OBJS = $(SRCS:.cpp=.o)
-
-NAME = phonebook
-
+NAME = filelog
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
