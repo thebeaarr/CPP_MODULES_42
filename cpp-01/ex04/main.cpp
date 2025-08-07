@@ -1,7 +1,9 @@
+#include <fstream>
 #include <iostream>
-#include <string>
+
 
 int main(int argc , char **argv)
 {
-
+  std::fstream file(argv[2]);
+  
 }
