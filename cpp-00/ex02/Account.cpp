@@ -77,30 +77,14 @@ bool Account::makeWithdrawal(int withdrawal)
         return false;
 }
 
+
+void Account::_displayTimestamp()
+{
+}
+
 Account::~Account(){
     _displayTimestamp();
     std::cout << "index:" << _accountIndex << ";amount:" << _amount;
     std::cout << ";deposits:" << _nbDeposits;
     std::cout << ";closed" << std::endl;
-}
-
-
-#include <iostream>
-#include <ctime>
-#include <iomanip>
-
-void Account::_displayTimestamp()
-{
-    std::time_t now = std::time(NULL);
-    std::tm* timeinfo = std::localtime(&now);
-
-    std::cout << '['
-              << (timeinfo->tm_year + 1900)
-              << std::setw(2) << std::setfill('0') << (timeinfo->tm_mon + 1)
-              << std::setw(2) << std::setfill('0') << timeinfo->tm_mday
-              << '_'
-              << std::setw(2) << std::setfill('0') << timeinfo->tm_hour
-              << std::setw(2) << std::setfill('0') << timeinfo->tm_min
-              << std::setw(2) << std::setfill('0') << timeinfo->tm_sec
-              << "] ";
 }
