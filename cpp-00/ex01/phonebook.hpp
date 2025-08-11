@@ -13,6 +13,7 @@ class Contact
     std::string dark_secret;
     std::string phone_number;
     int index ;
+    static int user; 
 
   public:
     void set_first_name(std::string);

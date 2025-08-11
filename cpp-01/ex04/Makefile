@@ -9,12 +9,8 @@ NAME=mfile
 
 all:$(NAME)
 
-$(NAME): $(OBJ)
-	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-
-
-%.o:%.cpp
-	@$(CXX) $(CXXFLAGS) -c $< -o $@
+$(NAME): $(SRC)
+	@$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
 
 clean:
 	@rm -rf $(OBJ)

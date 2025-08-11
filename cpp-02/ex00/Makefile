@@ -1,13 +1,26 @@
 CXX=c++
 
-CXXFLAGS= -Wall -Werror -Wextra 
+CXXFLAGS= -Wall -Werror -Wextra -std=c++98
 
 
-NAME= p
- 
-
-SRCS=Fixed.cpp  main.cpp
+SRC= main.cpp Fixed.cpp
 
 
-OBJS=$(SRCS:.o=.c)
+NAME=Fixed
+
+all:$(NAME)
+
+$(NAME): $(SRC)
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(NAME)
+
+
+clean:
+	@rm -rf *.o
+	@echo cleaning object files
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
 

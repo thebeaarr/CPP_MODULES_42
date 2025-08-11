@@ -13,12 +13,9 @@ int Account::getNbDeposits() { return _totalNbDeposits; }
 
 int Account::getNbWithdrawals() { return _totalNbWithdrawals; }
 
-Account::Account(int initial_depost) {
+Account::Account(int initial_depost) :  _accountIndex(_nbAccounts),  _amount(initial_depost),_nbDeposits(0) ,_nbWithdrawals(0 ){
     _amount = initial_depost;
     _totalAmount += initial_depost;
-    _nbDeposits= 0;
-    _nbWithdrawals = 0;
-    _accountIndex = _nbAccounts;
     this->_displayTimestamp();
     std::cout << "index:" << _nbAccounts << ";amount:" << _amount << ";created" << std::endl;
     _nbAccounts++;
@@ -80,6 +77,7 @@ bool Account::makeWithdrawal(int withdrawal)
 
 void Account::_displayTimestamp()
 {
+
 }
 
 Account::~Account(){
