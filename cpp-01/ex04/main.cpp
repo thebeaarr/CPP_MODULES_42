@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
         {
             std::string::size_type pos = 0;
             std::string::size_type found;
-            std::string update_line; // replacing means that we remove s1 and replace by s2
+            std::string update_line; // replacing means that we remove s1 and replace it by s2
             while(true)
             {
                 found = line.find(s1 , pos);
