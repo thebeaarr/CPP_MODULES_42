@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <sstream>
 
-// ---------- Contact Methods ----------
 
 void Contact::set_first_name(const std::string &value) { first_name = value; }
 void Contact::set_last_name(const std::string &value) { last_name = value; }
@@ -30,7 +29,6 @@ void Contact::print_contact_content() const {
               << std::setw(10) << truncate(nick_name) << std::endl;
 }
 
-// ---------- PhoneBook Methods ----------
 
 PhoneBook::PhoneBook() : index(0), oindex(0) {}
 
@@ -47,7 +45,7 @@ void PhoneBook::add_contact(const Contact &var) {
     if (var.get_dark_secret().empty() || var.get_first_name().empty() ||
         var.get_last_name().empty() || var.get_nick_name().empty() ||
         var.get_phone_number().empty()) {
-        std::cerr << "❌ Error: One or more fields are empty. Contact not saved.\n";
+        std::cerr << "Error: One or more fields are empty. Contact not saved.\n";
         return;
     }
 
