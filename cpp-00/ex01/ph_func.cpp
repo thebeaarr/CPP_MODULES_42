@@ -11,18 +11,45 @@ void Contact::set_dark_secret(const std::string &value) { dark_secret = value; }
 void Contact::set_phone_number(const std::string &value) { phone_number = value; }
 void Contact::set_index(int i) { index = i; }
 
-std::string Contact::get_first_name() const { return first_name; }
-std::string Contact::get_last_name() const { return last_name; }
-std::string Contact::get_nick_name() const { return nick_name; }
-std::string Contact::get_dark_secret() const { return dark_secret; }
-std::string Contact::get_phone_number() const { return phone_number; }
-int Contact::get_index() const { return index; }
-
-std::string Contact::truncate(const std::string &str) const {
-    return (str.length() > 10) ? str.substr(0, 9) + '.' : str;
+std::string Contact::get_first_name() const
+{
+    return first_name;
 }
 
-void Contact::print_contact_content() const {
+std::string Contact::get_last_name() const
+{
+    return last_name;
+}
+
+std::string Contact::get_nick_name() const
+{
+    return nick_name;
+}
+
+std::string Contact::get_dark_secret() const
+{
+    return dark_secret;
+}
+
+std::string Contact::get_phone_number() const
+{
+    return phone_number;
+}
+
+int Contact::get_index() const
+{
+    return index;
+}
+
+std::string Contact::truncate(const std::string &str) const
+{
+    if (str.length() > 10) 
+        return str.substr(0, 9) + '.';
+    return str;
+}
+
+void Contact::print_contact_content() const
+{
     std::cout << std::setw(10) << index << " | "
               << std::setw(10) << truncate(first_name) << " | "
               << std::setw(10) << truncate(last_name) << " | "
@@ -32,7 +59,8 @@ void Contact::print_contact_content() const {
 
 PhoneBook::PhoneBook() : index(0), oindex(0) {}
 
-void PhoneBook::assign_contact(Contact &dst, const Contact &src, int idx) {
+void PhoneBook::assign_contact(Contact &dst, const Contact &src, int idx)
+{
     dst.set_index(idx);
     dst.set_dark_secret(src.get_dark_secret());
     dst.set_first_name(src.get_first_name());
@@ -49,7 +77,7 @@ void PhoneBook::add_contact(const Contact &var) {
         return;
     }
 
-    if (index > 7) { // overwrite oldest
+    if (index > 7) {
         assign_contact(contact[oindex], var, oindex);
         oindex = (oindex + 1) % 8;
     } else {
@@ -58,9 +86,11 @@ void PhoneBook::add_contact(const Contact &var) {
     }
 }
 
-void PhoneBook::search_contact() const {
-    if (index == 0) {
-        std::cerr << "📭 No contacts stored.\n";
+void PhoneBook::search_contact() const
+{
+    if (index == 0)
+    {
+        std::cerr << "No contacts stored.\n";
         return;
     }
 
@@ -69,36 +99,38 @@ void PhoneBook::search_contact() const {
               << std::setw(10) << "Last Name" << " | "
               << std::setw(10) << "Nickname" << std::endl;
     std::cout << std::string(50, '-') << std::endl;
-
     for (int i = 0; i < ((index > 8) ? 8 : index); i++)
         contact[i].print_contact_content();
-
     print_user_detail();
 }
 
-void PhoneBook::print_user_detail() const {
+void PhoneBook::print_user_detail() const
+{
     std::cout << "Enter contact index: ";
     std::string input;
-    if (!std::getline(std::cin, input)) {
+    if (!std::getline(std::cin, input))
+    {
         std::cout << "Input error." << std::endl;
         return;
     }
 
     std::stringstream str(input);
     int index_user;
-    if (!(str >> index_user) || !str.eof()) {
-        std::cout << "Invalid number format." << std::endl ;
+    if (!(str >> index_user) || !str.eof())
+    {
+        std::cout << "Invalid number format." << std::endl;
         return;
     }
 
-    if (index_user < 0 || index_user >= ((index > 8) ? 8 : index)) {
+    if (index_user < 0 || index_user >= ((index > 8) ? 8 : index))
+    {
         std::cout << "No contact found at this index." << std::endl;
         return;
     }
 
     const Contact &c = contact[index_user];
-    std::cout << "\nContact Details:" << std::endl; 
-    std::cout << "First Name: " << c.get_first_name() << std::endl ;
+    std::cout << "\nContact Details:" << std::endl;
+    std::cout << "First Name: " << c.get_first_name() << std::endl;
     std::cout << "Last Name: " << c.get_last_name() << std::endl;
     std::cout << "Nickname: " << c.get_nick_name() << std::endl;
     std::cout << "Phone Number: " << c.get_phone_number() << std::endl;
