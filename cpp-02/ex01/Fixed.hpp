@@ -1,19 +1,28 @@
+#pragma once 
+
 #include <iostream>
+#include <string>
+
 
 class Fixed
 {
-    private:
-        int _value ;
-        const static int _fraction;
-    public:
-        Fixed();
-        Fixed(int const &i);
-        Fixed(float const &f);
-        Fixed(const Fixed &f);
-        Fixed &operator=(const Fixed &f);
-        ~Fixed();
+  private:
+    int _value;
+    static const int _fracbits = 8;
+  public:
 
-        float &operator<<(const Fixed &f);
-        float toFloat( void ) const;
-        int toInt( void ) const;
+    // i think this is the canonical form ( orthodoxal one )
+    Fixed();
+    Fixed(const Fixed &);
+    Fixed &operator=(const Fixed &op);
+    ~Fixed();
+
+    Fixed(const int &value);
+    Fixed(const float &value);
+    float toFloat(void) const;
+    int toInt(void) const;
+    
+
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
 };

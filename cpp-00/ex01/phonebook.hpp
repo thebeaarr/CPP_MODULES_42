@@ -1,6 +1,4 @@
-#ifndef PHONEBOOK_H
-#define PHONEBOOK_H
-
+#pragma once
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -50,5 +48,3 @@ public:
     void search_contact() const;
     void print_user_detail() const;
 };
-
-#endif

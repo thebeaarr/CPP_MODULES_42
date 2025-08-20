@@ -1,17 +1,21 @@
+#pragma once 
+
 #include <iostream>
+#include <string>
 
-class Fixed {
-private:
+
+class Fixed
+{
+  private:
     int _value;
-    const static int _fract = 8;
+    static const int _fracbits = 8;
+  public:
 
-public:
-    // canonical form
+    // i think this is the canonical form ( orthodoxal one )
     Fixed();
-    Fixed(Fixed const &fixed);
-    Fixed &operator=(Fixed const &f);
+    Fixed(const Fixed &);
+    Fixed &operator=(const Fixed &op);
     ~Fixed();
-
     int getRawBits(void) const;
     void setRawBits(int const raw);
 };
