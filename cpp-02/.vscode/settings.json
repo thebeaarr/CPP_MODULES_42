@@ -111,6 +111,14 @@
     "ostream": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "charconv": "cpp",
+    "ctime": "cpp",
+    "optional": "cpp",
+    "format": "cpp",
+    "span": "cpp",
+    "text_encoding": "cpp",
+    "cinttypes": "cpp",
+    "variant": "cpp"
   }
 }

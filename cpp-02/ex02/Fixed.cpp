@@ -64,3 +64,43 @@ std::ostream &operator<<(std::ostream &out , const Fixed &op)
   out << op.toFloat();
   return out;
 }
+
+// arithmetic operators
+
+// comparision
+
+// incrementation and decrementation ( pre ...)
+
+Fixed Fixed::operator++()
+{
+  ++this->_value;
+  return *this;
+}
+
+
+Fixed Fixed::operator++(int)
+{
+  Fixed tmp(*this);
+  ++this->_value;
+  return tmp;
+}
+
+Fixed Fixed::operator--(int)
+{
+  Fixed tmp(*this);
+  ++this->_value;
+  return tmp;
+}
+
+Fixed Fixed::operator--()
+{
+  --this->_value;
+  return *this;
+}
+
+const Fixed &Fixed::max(const Fixed &a , const Fixed &b)
+{
+  if(a > b )
+    return a;
+  return b;
+}
