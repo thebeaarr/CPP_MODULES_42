@@ -68,22 +68,30 @@ std::ostream &operator<<(std::ostream &out , const Fixed &op)
 // arithmetic operators
 Fixed Fixed::operator*(const Fixed &op)
 {
-  return Fixed(this->toFloat() * op.toFloat());
+  Fixed tmp ;
+  
+  // return Fixed(this->toFloat() * op.toFloat());
+  // cheating on the operator of the fixed point.
 }
 
 Fixed Fixed::operator/(const Fixed &op)
 {
-  return Fixed(this->toFloat() / op.toFloat());
+
+  // return Fixed(this->toFloat() / op.toFloat()); // cheating on the operator of the fixed point.
 }
 
 Fixed Fixed::operator+(const Fixed &op)
 {
-  return Fixed(this->toFloat() + op.toFloat());
+  Fixed tmp ;
+  tmp._value = this->_value + op._value;
+  return tmp;
 }
 
 Fixed Fixed::operator-(const Fixed &op)
 {
-  return Fixed(this->toFloat() - op.toFloat());
+  Fixed tmp ;
+  tmp._value = this->_value - op._value;
+  return tmp ;
 }
 
 // comparision
