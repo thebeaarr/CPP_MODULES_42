@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -22,23 +22,22 @@ class Fixed
     float toFloat(void) const;
     int toInt(void) const;
     // // The 4 arithmetic operators
-    // float &operator+(const Fixed &op) const;
-    // float &operator-(const Fixed &op) const;
-    // float &operator*(const Fixed &op) const;
-    // float &operator/(const Fixed &op) const;
-
+    Fixed operator*(const Fixed &op);
+    Fixed operator/(const Fixed &op);
+    Fixed operator+(const Fixed &op);
+    Fixed operator-(const Fixed &op);
     // Member operators (encapsulation preserved)
-    bool operator<(const Fixed &op) const { return _value < op._value; }
-    bool operator>(const Fixed &op) const { return _value > op._value; }
-    bool operator<=(const Fixed &op) const { return _value <= op._value; }
-    bool operator>=(const Fixed &op) const { return _value >= op._value; }
-    bool operator==(const Fixed &op) const { return _value == op._value; }
-    bool operator!=(const Fixed &op) const { return _value != op._value; }
+    bool operator<(const Fixed &op) const ;
+    bool operator>(const Fixed &op) const ;
+    bool operator<=(const Fixed &op) const;
+    bool operator>=(const Fixed &op) const ;
+    bool operator==(const Fixed &op) const ;
+    bool operator!=(const Fixed &op) const;
     // The 4 increment/decrement ( .resp pre...)
     Fixed operator++(int);
     Fixed operator--(int);
-    Fixed operator++();
-    Fixed operator--();
+    Fixed &operator++();
+    Fixed &operator--();
 
     int getRawBits(void) const;
     void setRawBits(int const raw);

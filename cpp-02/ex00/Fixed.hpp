@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -16,6 +16,7 @@ class Fixed
     Fixed(const Fixed &);
     Fixed &operator=(const Fixed &op);
     ~Fixed();
+
     int getRawBits(void) const;
     void setRawBits(int const raw);
 };

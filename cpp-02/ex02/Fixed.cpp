@@ -50,7 +50,7 @@ Fixed::Fixed(const float &value)
 
 float Fixed::toFloat() const
 {
-  
+
   return (float)_value / (1 << _fracbits);
 }
 
@@ -66,17 +66,40 @@ std::ostream &operator<<(std::ostream &out , const Fixed &op)
 }
 
 // arithmetic operators
+Fixed Fixed::operator*(const Fixed &op)
+{
+  return Fixed(this->toFloat() * op.toFloat());
+}
+
+Fixed Fixed::operator/(const Fixed &op)
+{
+  return Fixed(this->toFloat() / op.toFloat());
+}
+
+Fixed Fixed::operator+(const Fixed &op)
+{
+  return Fixed(this->toFloat() + op.toFloat());
+}
+
+Fixed Fixed::operator-(const Fixed &op)
+{
+  return Fixed(this->toFloat() - op.toFloat());
+}
 
 // comparision
-
+bool Fixed::operator<(const Fixed &op) const { return _value < op._value; }
+bool Fixed::operator>(const Fixed &op) const { return _value > op._value; }
+bool Fixed::operator<=(const Fixed &op) const { return _value <= op._value; }
+bool Fixed::operator>=(const Fixed &op) const { return _value >= op._value; }
+bool Fixed::operator==(const Fixed &op) const { return _value == op._value; }
+bool Fixed::operator!=(const Fixed &op) const { return _value != op._value; }
 // incrementation and decrementation ( pre ...)
 
-Fixed Fixed::operator++()
+Fixed &Fixed::operator++()
 {
   ++this->_value;
   return *this;
 }
-
 
 Fixed Fixed::operator++(int)
 {
@@ -87,12 +110,12 @@ Fixed Fixed::operator++(int)
 
 Fixed Fixed::operator--(int)
 {
-  Fixed tmp(*this);
+  Fixed &tmp(*this);
   ++this->_value;
   return tmp;
 }
 
-Fixed Fixed::operator--()
+Fixed &Fixed::operator--()
 {
   --this->_value;
   return *this;
@@ -101,6 +124,25 @@ Fixed Fixed::operator--()
 const Fixed &Fixed::max(const Fixed &a , const Fixed &b)
 {
   if(a > b )
+    return a;
+  return b;
+}
+const Fixed &Fixed::max(Fixed &a , Fixed &b)
+{
+  if(a > b )
+    return a;
+  return b;
+}
+
+const Fixed &Fixed::min(const Fixed &a , const Fixed &b)
+{
+  if (a < b)
+    return a;
+  return b;
+}
+const Fixed &Fixed::min(Fixed &a , Fixed &b)
+{
+  if (a < b)
     return a;
   return b;
 }
