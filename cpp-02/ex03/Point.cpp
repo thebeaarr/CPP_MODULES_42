@@ -37,7 +37,7 @@ const Fixed Point::get_y() const
 
 Fixed area(Point const x , Point const y,Point  const z)
 {
-  Fixed res = x.get_x() * (y.get_y() - z.get_y()) + y.get_x() * (x.get_y() - z.get_y()) + z.get_x() * (x.get_y() - y.get_y()) ;
+  Fixed res = x.get_x() * (y.get_y() - z.get_y()) + y.get_x() * (z.get_y() - x.get_y()) + z.get_x() * (x.get_y() - y.get_y()) ;
   res = res  / Fixed(2);
   if(res < Fixed(0))
     return res * Fixed(-1);
@@ -46,8 +46,16 @@ Fixed area(Point const x , Point const y,Point  const z)
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
   Fixed ABC  = area(a , b, c);
+  std::cout << ABC << std::endl ;
   Fixed ABPOINT = area(a , b , point);
+  std::cout << ABPOINT << std::endl ;
   Fixed ACPOINT = area(a , c , point );
+  std::cout << ACPOINT << std::endl ;
   Fixed CBPOINT = area( c, b , point);
-  return (ABC == ABPOINT + ACPOINT + CBPOINT);
+  std::cout << CBPOINT << std::endl ;
+
+  if (ABPOINT > Fixed(0) && ACPOINT > Fixed(0) && CBPOINT > Fixed(0) &&
+      (ABC == ABPOINT + ACPOINT + CBPOINT))
+    return true;
+  return false;
 }
