@@ -65,7 +65,6 @@ std::ostream &operator<<(std::ostream &out , const Fixed &op)
   return out;
 }
 
-// arithmetic operators
 Fixed Fixed::operator*(const Fixed &op)
 {
   Fixed tmp ;
@@ -94,14 +93,12 @@ Fixed Fixed::operator-(const Fixed &op)
   return tmp ;
 }
 
-// comparision
 bool Fixed::operator<(const Fixed &op) const { return _value < op._value; }
 bool Fixed::operator>(const Fixed &op) const { return _value > op._value; }
 bool Fixed::operator<=(const Fixed &op) const { return _value <= op._value; }
 bool Fixed::operator>=(const Fixed &op) const { return _value >= op._value; }
 bool Fixed::operator==(const Fixed &op) const { return _value == op._value; }
 bool Fixed::operator!=(const Fixed &op) const { return _value != op._value; }
-// incrementation and decrementation ( pre ...)
 
 Fixed &Fixed::operator++()
 {
