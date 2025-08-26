@@ -54,8 +54,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
   Fixed CBPOINT = area( c, b , point);
   std::cout << CBPOINT << std::endl ;
 
-  if (ABPOINT > Fixed(0) && ACPOINT > Fixed(0) && CBPOINT > Fixed(0) &&
-      (ABC == ABPOINT + ACPOINT + CBPOINT))
+  if ((ABC == ABPOINT + ACPOINT + CBPOINT))
     return true;
   return false;
 }
