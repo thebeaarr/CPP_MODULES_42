@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <exception>
-
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -20,20 +20,21 @@ class Bureaucrat
         class GradeTooHighException: public std::exception
         {
             public :
-                virtual const char *what() const throw()
+                const char *what() const throw()
                 {
-                    return "GradeTooHighException: too cold!";
+                    return  std::string("GradeTooHighException: too cold!").c_str();
                 }
         };
 
         class GradeTooLowException : public std::exception
         {
             public :
-                virtual const char *what() const throw()
+                const char *what() const throw()
                 {
-                    return "GradeTooHighException: too cold!";
+                    return std::string("GradeTooHighException: too cold!").c_str();
                 }
         };
+        void signForm(Form &f);
         void IncGrade(); 
         void DecGrade();
         const std::string &getName() const;

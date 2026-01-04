@@ -10,5 +10,20 @@ Form::Form(Form const &obj) : name(obj.getName()), isSigned(obj.getisSigned()), 
 
 Form::Form(std::string const &namec , bool isSignedc, int gradetoSignc , int gradetoExcutec) : name(namec) , isSigned(isSignedc) , gradetoExcute(gradetoExcutec) , gradetoSign(gradetoSignc)
 {
-
 }
+
+Form::~Form()
+{
+}
+
+
+
+void Form::beSigned(const Bureaucrat &obj)
+{
+    if(obj.getGrade() <= this->getgradetoSign())
+        this->isSigned = true;
+    else
+        throw Bureaucrat::GradeTooLowException();
+}
+
+

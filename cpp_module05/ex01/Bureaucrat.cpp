@@ -1,5 +1,6 @@
-#include "Bureaucrat.hpp"
 
+
+#include "Bureaucrat.hpp"
 Bureaucrat::Bureaucrat() : name("unkown") , grade(150)
 {
 }
@@ -42,3 +43,18 @@ std::ostream &operator<<(std::ostream &os , Bureaucrat &obj)
     os << obj.getName() << " , bureaucrat grade " << obj.getGrade() << "." ;
     return os ;
 }
+
+
+
+void Bureaucrat::signForm(Form &f)
+{
+    try
+    {
+        f.beSigned(*this);
+    }
+    catch(Bureaucrat::GradeTooLowException &e)
+    {
+        std::cout << this->getName() << "  couldn’t sign" << f.getName() << " because " << e.what()<< std::endl;
+    } 
+}
+
