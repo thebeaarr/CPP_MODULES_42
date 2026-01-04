@@ -1,21 +1,44 @@
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
+
 #include <string>
+#include <iostream>
 #include <exception>
 
-class Bureaucrat : public std::exception
+
+class Bureaucrat
 {
-private:
-    const std::string _name;
-    int _grade; // 1 = highest, 150 = lowest
-public:
-    Bureaucrat() : _name("Unnamed"), _grade(150) {}
-    Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade) {}
-    ~Bureaucrat() noexcept {}
-    const std::string& get_name() const { return _name; }
-    int get_grade() const { return _grade; }
+    private:
+        std::string const name ;
+       int grade; 
+    public:
+        Bureaucrat();
+        Bureaucrat(const Bureaucrat &obj);
+        Bureaucrat(const std::string & name, int gade);
+        ~Bureaucrat();
 
-    void set_grade(int grade) { _grade = grade; }
+        class GradeTooHighException: public std::exception
+        {
+            public :
+                virtual const char *what() const throw()
+                {
+                    return "GradeTooHighException: too cold!";
+                }
+        };
 
-    const char* what() const noexcept override {
-        return "Bureaucrat exception";
-    }
+        class GradeTooLowException : public std::exception
+        {
+            public :
+                virtual const char *what() const throw()
+                {
+                    return "GradeTooHighException: too cold!";
+                }
+        };
+        void IncGrade(); 
+        void DecGrade();
+        const std::string &getName() const;
+        const int &getGrade() const;
 };
+
+std::ostream &operator<<(std::ostream &os , Bureaucrat  &obj);
+#endif
