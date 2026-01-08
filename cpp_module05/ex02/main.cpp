@@ -12,6 +12,7 @@ int main()
 		form.beSigned(*c);
 		form.execute(*c);
 	}
+
 	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << e.what();
