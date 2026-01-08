@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <exception>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat
 {
@@ -34,7 +34,8 @@ class Bureaucrat
 					return "GradeTooHighException: too cold!";
 				}
 		};
-		void signForm(Form &f);
+		void executeForm(AForm const & form) const;
+		void signForm(AForm &f);
 		void IncGrade(); 
 		void DecGrade();
 		const std::string &getName() const;
