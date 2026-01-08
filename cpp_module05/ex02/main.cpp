@@ -7,8 +7,9 @@ int main()
 {
 	try
 	{
-		Bureaucrat *c  = new Bureaucrat("medo" , 1);
-		ShrubberyCreactionForm form;
+		Bureaucrat *c  = new Bureaucrat("medo" , 10);
+		ShrubberyCreactionForm form("Bender");
+		form.beSigned(*c);
 		form.execute(*c);
 	}
 	catch(Bureaucrat::GradeTooHighException &e)
@@ -25,6 +26,6 @@ int main()
 	}
 	catch(AForm::GradeTooLowException &e)
 	{
-		std::cout << e.what() ;
+		std::cout << e.what() << std::endl ;
 	}
 }

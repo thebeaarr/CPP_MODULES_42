@@ -10,6 +10,6 @@ int main()
 		(void)rrf;
 	}catch (...)
 	{
-		
+		std::cout << "nichan" << std::endl ;
 	}
 }

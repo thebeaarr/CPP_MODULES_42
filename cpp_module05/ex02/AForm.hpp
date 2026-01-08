@@ -9,8 +9,8 @@ class AForm
 {
 	private:
 		std::string const name; 
-		int const gradetoExcute;
-		int const gradetoSign;
+		const int  gradetoExcute;
+		const int  gradetoSign;
 		bool isSigned ;
 	public:
 		AForm();
@@ -35,8 +35,9 @@ class AForm
 		virtual void  execute(Bureaucrat const & executor)  const = 0;
 		void beSigned(const Bureaucrat &obj);
 		const std::string &getName() const {return this->name ;}
-		const bool &getisSigned() const {return this->isSigned ;}
-		const int &getgradetoExcute() const {return this->gradetoExcute;}
-		const int &getgradetoSign() const {return this->gradetoSign;}
+		bool getisSigned() const {return this->isSigned ;}
+		int getgradetoExcute() const
+		{return gradetoExcute;}
+		int getgradetoSign() const {return this->gradetoSign;}
 };
 std::ostream &operator<<(std::ostream &os, const AForm &obj);
