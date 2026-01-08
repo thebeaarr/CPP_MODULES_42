@@ -1,0 +1,34 @@
+CXX= c++
+CXXFLAGS= -Wall -Werror -Wextra -std=c++98
+
+
+
+NAME=Form
+
+
+SRC=main.cpp Intern.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
+
+
+
+OBJ=$(SRC:.cpp=.o)
+
+
+
+
+all:$(NAME)
+
+
+$(NAME):$(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+
+
+clean : 
+	rm -rf $(OBJ)
+
+fclean : clean
+	rm -rf $(NAME)

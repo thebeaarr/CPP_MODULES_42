@@ -16,8 +16,6 @@ Form::~Form()
 {
 }
 
-
-
 void Form::beSigned(const Bureaucrat &obj)
 {
 	if(obj.getGrade() <= this->getgradetoSign())
