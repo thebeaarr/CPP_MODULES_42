@@ -1,15 +1,21 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): target("home") , AForm("PresidentialPardonForm" , false , 25 , 5)
+PresidentialPardonForm::PresidentialPardonForm():  AForm("PresidentialPardonForm" , false , 25 , 5)
 {
+	this->target  = "home";
 }
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const &tar): target(tar) , AForm("PresidentialPardonForm" , false , 25 , 5)
+
+PresidentialPardonForm::PresidentialPardonForm(std::string const &tar): AForm("PresidentialPardonForm" , false , 25 , 5)
 {
+	this->target  = tar;
+	
 }
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj): target(obj.target) , AForm("PresidentialPardonForm" , false , 25 , 5)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj): AForm("PresidentialPardonForm" , false , 25 , 5)
 {
+	this->target  = obj.target;
+	
 }
 
 
@@ -23,3 +29,5 @@ void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 	std::cout << this->target << "has been pardoned by Zaphod Beeblebrox." << std::endl ;
 }
 
+
+PresidentialPardonForm::~PresidentialPardonForm(){}

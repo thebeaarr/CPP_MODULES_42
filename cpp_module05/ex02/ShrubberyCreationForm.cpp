@@ -1,16 +1,18 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 #include <stdexcept>
-ShrubberyCreactionForm::ShrubberyCreactionForm() : target("home"),AForm("ShrubberyCreactionForm" , false , 145 , 137)
+ShrubberyCreactionForm::ShrubberyCreactionForm() : AForm("ShrubberyCreactionForm" , false , 145 , 137)
 {
+	this->target = "home";
 }
 
-ShrubberyCreactionForm::ShrubberyCreactionForm(const std::string &tar): target(tar),AForm("ShrubberyCreactionForm" , false , 145 , 137)
+ShrubberyCreactionForm::ShrubberyCreactionForm(const std::string &tar):AForm("ShrubberyCreactionForm" , false , 145 , 137)
 {
-	
+	this->target = tar;
 }
-ShrubberyCreactionForm::ShrubberyCreactionForm(const ShrubberyCreactionForm &obj): target(obj.target),AForm("ShrubberyCreactionForm" , false , 145 , 137)
+ShrubberyCreactionForm::ShrubberyCreactionForm(const ShrubberyCreactionForm &obj):AForm("ShrubberyCreactionForm" , false , 145 , 137)
 {
+	this->target = obj.target;
 }
 
 ShrubberyCreactionForm::~ShrubberyCreactionForm()

@@ -1,16 +1,30 @@
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+
+#include <iostream>
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	try 
+	try
 	{
-		Bureaucrat *b = new Bureaucrat("simo" , 2);
-		Form a("form" , false , 2 , 20);
-		b->signForm(a);
+		Bureaucrat *c  = new Bureaucrat("medo" , 1);
+		ShrubberyCreactionForm form;
+		form.execute(*c);
 	}
-	catch(std::exception &e)
+	catch(Bureaucrat::GradeTooHighException &e)
 	{
-		std::cout << e.what() << std::endl ;
+		std::cout << e.what();
+	}
+	catch(Bureaucrat::GradeTooLowException &e )
+	{
+		std::cout << e.what();
+	}
+	catch(AForm::GradeTooHighException &e)
+	{
+		std::cout << e.what();
+	}
+	catch(AForm::GradeTooLowException &e)
+	{
+		std::cout << e.what() ;
 	}
 }

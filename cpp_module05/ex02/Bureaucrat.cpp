@@ -7,10 +7,19 @@ Bureaucrat::Bureaucrat() : name("unkown") , grade(150)
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade)
 {
+	if(grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if(grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+
 }
 
 Bureaucrat::Bureaucrat(std::string const &name , int grade): name(name) , grade(grade)
 {
+	if(grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	if(grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 Bureaucrat::~Bureaucrat()

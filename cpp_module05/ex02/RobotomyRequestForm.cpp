@@ -3,17 +3,17 @@
 
 
 
-RobotomyRequestForm::RobotomyRequestForm() : target("home") , AForm("RobotomyRequestForm" , false , 72 , 45)
+RobotomyRequestForm::RobotomyRequestForm() :AForm("RobotomyRequestForm" , false , 72 , 45)
 {
-	
+	this->target = "home";
 }
-RobotomyRequestForm::RobotomyRequestForm(std::string const &targetc) : target(targetc) , AForm("RobotomyRequestForm" , false , 72 , 45)
+RobotomyRequestForm::RobotomyRequestForm(std::string const &targetc) :  AForm("RobotomyRequestForm" , false , 72 , 45)
 {
-	
+	this->target = targetc;
 }
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) : target(obj.target) , AForm("RobotomyRequestForm" , false , 72 , 45)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) :  AForm("RobotomyRequestForm" , false , 72 , 45)
 {
-	
+	this->target = obj.target ;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()

@@ -22,14 +22,14 @@ class AForm
 			public :
 			virtual const char *what() const throw()
 			{
-				return "GradeTooHighException: too cold!";
+				return "GradeTooHighException: Bureaucrat has more than the form required";
 			}
 		};
 		class GradeTooLowException: std::exception
 		{
 			public : virtual  const char *what() const throw()
 			{
-				return "GradeTooLowException: too cold!";
+				return "GradeTooHighException: Bureaucrat has less than the form required";
 			}
 		};
 		virtual void  execute(Bureaucrat const & executor)  const = 0;
