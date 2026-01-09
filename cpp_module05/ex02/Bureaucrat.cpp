@@ -43,6 +43,15 @@ const std::string &Bureaucrat::getName() const
 {
 	return this->name;
 }
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: to far from [0,150].";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: too far from [0,150].";
+}
 
 void Bureaucrat::DecGrade()
 {

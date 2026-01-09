@@ -13,6 +13,6 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(std::string const  &tar);
 		PresidentialPardonForm(const PresidentialPardonForm &obj);
 		~PresidentialPardonForm();
-		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 		virtual void execute(Bureaucrat const & executor)  const ;
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 };

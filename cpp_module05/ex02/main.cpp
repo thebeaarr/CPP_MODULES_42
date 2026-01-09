@@ -1,13 +1,13 @@
 #include <iostream>
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
-
+#include "RobotomyRequestForm.hpp"
 int main()
 {
 	try
 	{
 		Bureaucrat *c  = new Bureaucrat("medo" , 10);
-		ShrubberyCreactionForm form("Bender");
+		RobotomyRequestForm form("Bender");
 		form.beSigned(*c);
 		form.execute(*c);
 	}

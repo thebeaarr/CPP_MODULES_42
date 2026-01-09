@@ -18,7 +18,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &obj) :  AFor
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor)  const
@@ -28,7 +27,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor)  const
 	if (!this->getisSigned())
 		throw AForm::GradeTooLowException();
 
-		std::cout << "* drilling noises *" << std::endl ;
+	std::cout << "* drilling noises *" << std::endl ;
 	std::srand(time(0));
 	if(rand() % 2 )
 	{

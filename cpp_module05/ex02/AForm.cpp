@@ -15,10 +15,20 @@ AForm::AForm(std::string const &namec , bool isSignedc, int gradetoSignc , int g
 AForm::~AForm()
 {
 }
+
+
+const char *AForm::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: Bureaucrat has less than the form required";
+}
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: Bureaucrat has less than the form required";
+}
+
 const std::string &AForm::getName() const {return this->name ;}
 bool AForm::getisSigned() const {return this->isSigned ;}
-int AForm::getgradetoExcute() const
-{return gradetoExcute;}
+int AForm::getgradetoExcute() const {return gradetoExcute;}
 int AForm::getgradetoSign() const {return this->gradetoSign;}
 AForm &AForm::operator=(const AForm &obj)
 {

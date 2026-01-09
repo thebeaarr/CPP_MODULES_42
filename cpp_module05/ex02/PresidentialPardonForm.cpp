@@ -10,12 +10,11 @@ PresidentialPardonForm::PresidentialPardonForm():  AForm("PresidentialPardonForm
 PresidentialPardonForm::PresidentialPardonForm(std::string const &tar): AForm("PresidentialPardonForm" , false , 25 , 5)
 {
 	this->target  = tar;
-	
 }
+
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj): AForm("PresidentialPardonForm" , false , 25 , 5)
 {
 	this->target  = obj.target;
-	
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &obj)

@@ -26,10 +26,7 @@ class AForm
 		class GradeTooLowException: std::exception
 		{
 			public :
-			virtual  const char *what() const throw()
-			{
-				return "GradeTooHighException: Bureaucrat has less than the form required";
-			}
+			virtual  const char *what() const throw();
 		};
 		virtual void  execute(Bureaucrat const & executor)  const = 0;
 		void beSigned(const Bureaucrat &obj);
