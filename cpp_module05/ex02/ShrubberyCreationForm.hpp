@@ -10,6 +10,6 @@ class ShrubberyCreactionForm : public AForm
 		ShrubberyCreactionForm(const std::string &tar);
 		ShrubberyCreactionForm(const ShrubberyCreactionForm &obj);
 		~ShrubberyCreactionForm();
-
+		ShrubberyCreactionForm &operator=(const ShrubberyCreactionForm &obj);
 		virtual void execute(Bureaucrat const & executor)  const ;
 };

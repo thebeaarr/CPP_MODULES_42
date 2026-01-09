@@ -16,23 +16,17 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &obj);
 		Bureaucrat(const std::string & name, int gade);
 		~Bureaucrat();
-
+		Bureaucrat &operator=(const Bureaucrat &obj);
 		class GradeTooHighException: public std::exception
 		{
 			public :
-				const char *what() const throw()
-				{
-					return  "GradeTooHighException: too cold!";
-				}
+				virtual const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public :
-				const char *what() const throw()
-				{
-					return "GradeTooHighException: too cold!";
-				}
+				virtual const char *what() const throw();
 		};
 		void signForm(Form &f);
 		void IncGrade(); 

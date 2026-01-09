@@ -1,12 +1,13 @@
 #include "RobotomyRequestForm.hpp"
 
-
+#include <cstdlib>
 
 
 RobotomyRequestForm::RobotomyRequestForm() :AForm("RobotomyRequestForm" , false , 72 , 45)
 {
 	this->target = "home";
 }
+
 RobotomyRequestForm::RobotomyRequestForm(std::string const &targetc) :  AForm("RobotomyRequestForm" , false , 72 , 45)
 {
 	this->target = targetc;
@@ -20,7 +21,14 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 	
 }
-
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &obj)
+{
+	if(this != &obj)
+	{
+		this->target = obj.target;
+	}
+	return *this ;
+}
 
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor)  const
@@ -31,8 +39,11 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor)  const
 		throw AForm::GradeTooLowException();
 	
 	std::cout << "* drilling noises *" << std::endl ;
-	// making it random to just show even 50% success or failed 
-	// and write this.target has been robotomized  successfully 50% of the time
-	// or failed anyway
+	std::srand(time(0));
+	if(rand() % 2 )
+	{
+		std::cout << this->target << " has been robotomized successfully 50\% of the time" << std::endl ;
+	}
+	else
+		std::cout << "the robotomy failed" << std::endl ;
 }
-

@@ -10,7 +10,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade)
 		throw Bureaucrat::GradeTooLowException();
 	if(grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-
 }
 
 Bureaucrat::Bureaucrat(std::string const &name , int grade): name(name) , grade(grade)
@@ -21,23 +20,42 @@ Bureaucrat::Bureaucrat(std::string const &name , int grade): name(name) , grade(
 		throw Bureaucrat::GradeTooHighException();
 }
 
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat&obj)
+{
+	if(this != &obj)
+	{
+		this->grade = obj.grade;
+	}
+	return *this;
+}
+
 Bureaucrat::~Bureaucrat()
 {
 }
 
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: to far from [0,150].";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: too far from [0,150].";
+}
+
 const int &Bureaucrat::getGrade() const
 {
-    return this->grade;
+	return this->grade;
 }
 
 const std::string &Bureaucrat::getName() const
 {
-    return this->name;
+	return this->name;
 }
 
 void Bureaucrat::DecGrade()
 {
-    this->grade++;
+	this->grade++;
 }
 
 void Bureaucrat::IncGrade()

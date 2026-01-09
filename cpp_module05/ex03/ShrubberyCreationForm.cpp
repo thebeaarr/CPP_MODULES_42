@@ -47,3 +47,13 @@ void ShrubberyCreactionForm::execute(Bureaucrat const & executor) const
 	// file << "      |||            \n" ;
 	file.close();
 }
+
+
+ShrubberyCreactionForm &ShrubberyCreactionForm::operator=(const ShrubberyCreactionForm &obj)
+{
+	if(this != &obj)
+	{
+		this->target = obj.target ;
+	}
+	return *this ;
+}

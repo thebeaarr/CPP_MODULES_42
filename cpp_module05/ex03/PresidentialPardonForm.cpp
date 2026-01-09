@@ -17,7 +17,14 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj
 	this->target  = obj.target;
 	
 }
-
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &obj)
+{
+	if(this != &obj)
+	{
+		this->target = obj.target;
+	}
+	return *this ;
+}
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {

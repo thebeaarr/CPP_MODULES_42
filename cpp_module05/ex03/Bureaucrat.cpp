@@ -13,7 +13,14 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj) : name(obj.name), grade(obj.grade)
 		throw Bureaucrat::GradeTooHighException();
 
 }
-
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat&obj)
+{
+	if(this != &obj)
+	{
+		this->grade = obj.grade;
+	}
+	return *this;
+}
 Bureaucrat::Bureaucrat(std::string const &name , int grade): name(name) , grade(grade)
 {
 	if(grade > 150)

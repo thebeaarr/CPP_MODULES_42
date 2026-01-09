@@ -20,6 +20,24 @@ Bureaucrat::Bureaucrat(std::string const &name , int grade): name(name) , grade(
 	if(grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 }
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat&obj)
+{
+	if(this != &obj)
+	{
+		this->grade = obj.grade;
+	}
+	return *this;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: to far from [0,150].";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: too far from [0,150].";
+}
 
 Bureaucrat::~Bureaucrat()
 {
@@ -49,7 +67,6 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &obj)
 	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << ".";
 	return os;
 }
-
 
 void Bureaucrat::signForm(Form &f)
 {

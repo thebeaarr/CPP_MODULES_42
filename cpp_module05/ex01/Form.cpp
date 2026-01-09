@@ -21,15 +21,34 @@ void Form::beSigned(const Bureaucrat &obj)
 	if(obj.getGrade() <= this->getgradetoSign())
 	{
 		this->isSigned = true;
-		std::cout << "Form Signed :)" << std::endl;
+		std::cout << this->getName() << " Signed :)" << std::endl;
 	}
 	else
 		throw Bureaucrat::GradeTooLowException();
 }
 
+Form &Form::operator=(const Form &obj)
+{
+	if(this != &obj)
+	{
+		this->isSigned = obj.isSigned ;
+	}
+	return *this ;
+}
 
+const std::string &Form::getName() const {return this->name ;}
+const bool &Form::getisSigned() const {return this->isSigned ;}
+const int &Form::getgradetoExcute() const {return this->gradetoExcute;}
+const int &Form::getgradetoSign() const {return this->gradetoSign;}
 
-
+const char *Form::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: Bureaucrat has more than the form required";
+}
+const char *Form::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: Bureaucrat has less than the form required";
+}
 
 std::ostream &operator<<(std::ostream &os, const Form &obj)
 {

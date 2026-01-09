@@ -15,6 +15,19 @@ AForm::AForm(std::string const &namec , bool isSignedc, int gradetoSignc , int g
 AForm::~AForm()
 {
 }
+const std::string &AForm::getName() const {return this->name ;}
+bool AForm::getisSigned() const {return this->isSigned ;}
+int AForm::getgradetoExcute() const
+{return gradetoExcute;}
+int AForm::getgradetoSign() const {return this->gradetoSign;}
+AForm &AForm::operator=(const AForm &obj)
+{
+	if(this != &obj)
+	{
+		this->isSigned = obj.isSigned ;
+	}
+	return *this ;
+}
 
 void AForm::beSigned(const Bureaucrat &obj)
 {
