@@ -15,6 +15,14 @@ AForm::AForm(std::string const &namec , bool isSignedc, int gradetoSignc , int g
 AForm::~AForm()
 {
 }
+const char *AForm::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: Bureaucrat has less than the form required";
+}
+const char *AForm::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: Bureaucrat has less than the form required";
+}
 
 void AForm::beSigned(const Bureaucrat &obj)
 {

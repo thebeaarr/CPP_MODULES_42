@@ -28,7 +28,7 @@ class Form
 			public :
 			virtual  const char *what() const throw();
 		};
-		
+
 		void beSigned(const Bureaucrat &obj);
 		const std::string &getName() const;
 		const bool &getisSigned() const;

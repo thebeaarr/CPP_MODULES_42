@@ -8,7 +8,8 @@ int main()
 		AForm* rrf;
 		rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
 		(void)rrf;
-	}catch (...)
+	}
+	catch (...)
 	{
 		std::cout << "nichan" << std::endl ;
 	}

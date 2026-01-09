@@ -43,11 +43,11 @@ const int &Form::getgradetoSign() const {return this->gradetoSign;}
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "GradeTooHighException: Bureaucrat has more than the form required";
+	return "GradeTooHighException: Bureaucrat has higher than the form required";
 }
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "GradeTooLowException: Bureaucrat has less than the form required";
+	return "GradeTooLowException: Bureaucrat has lower than the form required";
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &obj)
