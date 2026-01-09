@@ -39,3 +39,12 @@ AForm *Intern::makeForm(std::string const &form , std::string const &target)
 	return forma ;
 }
 
+
+Intern &Intern::operator=(const Intern &obj)
+{
+	if(this != &obj)
+	{
+		(void)obj;
+	}
+	return *this ; 
+}

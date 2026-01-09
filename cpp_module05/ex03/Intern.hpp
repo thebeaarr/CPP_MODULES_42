@@ -9,6 +9,7 @@ class Intern
 		Intern();
 		Intern(const Intern &obj);
 		~Intern();
+		Intern &operator=(const Intern &obj);
 		class FormNotFoundException:public  std::exception 
 		{
 			virtual char const *what() const throw()

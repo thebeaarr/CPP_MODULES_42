@@ -70,7 +70,15 @@ void Bureaucrat::signForm(AForm &f)
 		std::cout << this->getName() << "  Can't Sign " << f.getName() << " because " << e.what()<< std::endl;
 	} 
 }
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "GradeTooHighException: to far from [0,150].";
+}
 
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "GradeTooLowException: too far from [0,150].";
+}
 
 void Bureaucrat::executeForm(AForm const & form) const
 {

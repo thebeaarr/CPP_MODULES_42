@@ -21,19 +21,13 @@ class Bureaucrat
 		class GradeTooHighException: public std::exception
 		{
 			public :
-				const char *what() const throw()
-				{
-					return  "GradeTooHighException: too cold!";
-				}
+				const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public :
-				const char *what() const throw()
-				{
-					return "GradeTooHighException: too cold!";
-				}
+				const char *what() const throw();
 		};
 		void executeForm(AForm const & form) const;
 		void signForm(AForm &f);
