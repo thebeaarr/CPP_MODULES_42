@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T *a , const int &value ,void (*f)(T &))
+template <typename T , typename F >
+void iter(T *a , const int &value ,F f )
 {
 	for(int i =  0 ; i < value ; i++)
 	{
