@@ -3,14 +3,10 @@
 
 int main()
 {
-	int *a = new int[10];
-	for(int i = 0 ; i < 10 ; i++)
-	{
-		a[i] = 10 ;
-	}
+	int a[10] = { 10 , 10 , 20 , 10 , 10 , 10 , 10 , 10 , 10 ,10};
 	
 	
-	iter(a , 10 , func<int>);
+	iter(a , 10 , 10 );
 	for(int i = 0 ; i < 10 ; i++)
 	{
 		std::cout << a[i] << std::endl ;
