@@ -7,7 +7,7 @@ void iter(T *a , const int &value ,F f)
 {
 	for(int i =  0 ; i < value ; i++)
 	{
-		a[i] = a[i] + f;
+		f(a[i]);
 	}
 }
 
@@ -17,3 +17,4 @@ void func(T &a)
 {
 	a++;
 }
+
