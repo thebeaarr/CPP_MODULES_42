@@ -17,55 +17,19 @@ class  Array
 		unsigned int _size ;
 	public :
 
-	Array(): _data(NULL) , _size(0){}
+	Array();
 
-		Array(unsigned int n): _data(new T[n]()) , _size(n){}
+		Array(unsigned int n);
 
-		Array(const Array &other)
-		{
-			this->_size = other._size ;
-			this->_data = new T[this->_size]();
-			for(int i = 0 ; i < this->_size ; i++)
-				this->_data[i] = other._data[i];
-		}
+		Array(const Array &other);
+		Array &operator=(const Array &other);
 
-		Array &operator=(const Array &other)
-		{
-			if(&other != this)
-			{
-				this->_size = other._size;
-				this->_data = new T[this->_size]();
-				for(int i = 0 ; i < this->_size ; i++)
-				this->_data[i] = other._data[i];
-			}
-			
-			return *this ;
-		}
+		T &operator[](unsigned int index);
+		const T &operator[](unsigned int index) const;
 
-		T &operator[](unsigned int index)
-		{
-			if(index >= this->_size)
-				throw std::exception();
-			return _data[index];
-
-		}
-		const T &operator[](unsigned int index) const
-		{
-			if(index >= this->_size)
-				throw std::exception();
-				
-			
-			return _data[index];
-		}
-
-		unsigned int size() const 
-		{
-			return this->_size ;
-		}
-
-		~Array()
-		{
-			delete[] _data;
-		}
-
+		const unsigned int &size() const;
+		~Array();
 };
+
+
+#include "Array.tpp"
