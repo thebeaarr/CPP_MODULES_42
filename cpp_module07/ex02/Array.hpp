@@ -1,31 +1,64 @@
-#pragma  once 
+#pragma once
 
 
-#include <string>
 #include <iostream>
+#include <string>
+
+
+
 
 template <typename T>
-class Array
+
+#include <exception>
+class  Array
 {
-	private :
-		T *a ;
+	private : 
+		T *_data ;
+		unsigned int _size ;
 	public :
-		Array();
-		Array(unsigned int n) 
+		Array(): _data(NULL) , _size(0){}
+		Array(unsigned int n): _data(T new[n]()) , _size(n){}
+		Array(const Array &other)
 		{
-			a = new T[n];
+			this->_size = other._size ;
+			this->_data = T new[n]();
+			for(int i = 0 ; i < this->_size ; i++)
+				this->_data[i] = other._data[i];
 		}
-		
-		Array &operator=(const Array &obj)
+
+		Array &operator=(const Array &other)
 		{
-			if(this != &obj)
+			if(&other != this  )
 			{
-				this->a = new T[](obj.a);
+				this->_size = other._size ;
+				this->_data = T new[n]();
+				for(int i = 0 ; i < this->_size ; i++)
+				this->_data[i] = other._data[i];
 			}
+			
 			return *this ;
 		}
-		Array(const Array &obj)
+		T &operator[](unsigned int index)
 		{
-			
+			if(index >= this->size)
+				throw std::out_of_range;
+			return _data[index];
 		}
+		const T &operator[](unsigned int index) const
+		{
+			if(index >= this->size)
+				throw std::out_of_range;
+			return _data[index];
+		}
+		
+		const void size() const 
+		{
+			return this->_size ;
+		}
+
+		~Array()
+		{
+			delete[] _data;
+		}
+		
 };
