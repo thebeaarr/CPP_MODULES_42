@@ -1,19 +1,20 @@
 #include "iter.hpp"
 
+
+
 template<typename T>
-void func(T &a)
+void iter(T &a)
 {
 	a++;
 }
 
+
+
 int main()
 {
-	int a[10] = { 10 , 10 , 20 , 10 , 10 , 10 , 10 , 10 , 10 ,10};
+	int T[]  = { 1, 2, 3, 4, 0};
+	iter(T , 5 , iter<int>);
+	for(int i = 0 ; i < 5 ; i++)
+		std::cout << T[i] << std::endl ;
 	
-	
-	iter(a , 10 , func<int >);
-	for(int i = 0 ; i < 10 ; i++)
-	{
-		std::cout << a[i] << std::endl ;
-	}
 }
