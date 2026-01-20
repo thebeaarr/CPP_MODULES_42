@@ -10,11 +10,3 @@ void iter(T *a , const int &value ,F f)
 		f(a[i]);
 	}
 }
-
-
-template<typename T>
-void func(T &a)
-{
-	a++;
-}
-
