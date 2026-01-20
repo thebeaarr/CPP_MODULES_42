@@ -59,8 +59,6 @@ const unsigned int &Array<T>::size() const
 	return this->_size ;
 }
 
-
-
 template <typename T>
 Array<T>::~Array()
 {

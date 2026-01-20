@@ -2,14 +2,16 @@
 
 
 #include <iostream>
+
 #include <string>
 
+
+#include <exception>
 
 
 
 template <typename T>
 
-#include <exception>
 class  Array
 {
 	private : 
