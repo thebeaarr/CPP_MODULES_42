@@ -16,42 +16,49 @@ class  Array
 		T *_data ;
 		unsigned int _size ;
 	public :
-		Array(): _data(NULL) , _size(0){}
-		Array(unsigned int n): _data(T new[n]()) , _size(n){}
+
+	Array(): _data(NULL) , _size(0){}
+
+		Array(unsigned int n): _data(new T[n]()) , _size(n){}
+
 		Array(const Array &other)
 		{
 			this->_size = other._size ;
-			this->_data = T new[n]();
+			this->_data = new T[this->_size]();
 			for(int i = 0 ; i < this->_size ; i++)
 				this->_data[i] = other._data[i];
 		}
 
 		Array &operator=(const Array &other)
 		{
-			if(&other != this  )
+			if(&other != this)
 			{
-				this->_size = other._size ;
-				this->_data = T new[n]();
+				this->_size = other._size;
+				this->_data = new T[this->_size]();
 				for(int i = 0 ; i < this->_size ; i++)
 				this->_data[i] = other._data[i];
 			}
 			
 			return *this ;
 		}
+
 		T &operator[](unsigned int index)
 		{
-			if(index >= this->size)
-				throw std::out_of_range;
+			if(index >= this->_size)
+				throw std::exception();
 			return _data[index];
+
 		}
 		const T &operator[](unsigned int index) const
 		{
-			if(index >= this->size)
-				throw std::out_of_range;
+			if(index >= this->_size)
+				throw std::exception();
+				
+			
 			return _data[index];
 		}
-		
-		const void size() const 
+
+		unsigned int size() const 
 		{
 			return this->_size ;
 		}
@@ -60,5 +67,5 @@ class  Array
 		{
 			delete[] _data;
 		}
-		
+
 };
