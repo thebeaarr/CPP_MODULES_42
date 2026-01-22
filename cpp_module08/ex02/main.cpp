@@ -3,7 +3,7 @@
 #include <iostream>
 int main()
 {
-MutantStack<int> mstack;
+MutantStack<int , std::deque<int> > mstack;
 mstack.push(5);
 mstack.push(17);
 std::cout << mstack.top() << std::endl;
