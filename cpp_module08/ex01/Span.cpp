@@ -58,7 +58,6 @@ int Span::longestSpan()
     return L ;
 }
 
-
 int Span::shortestSpan() 
 {
     std::vector<int> cpyvec(_vec);
