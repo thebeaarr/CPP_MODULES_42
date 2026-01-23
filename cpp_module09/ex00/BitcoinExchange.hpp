@@ -11,12 +11,11 @@
 
 
 #include <cstdlib>
-class DB
+class BitcoinExchange
 {
     private :
         std::map<std::string , double> database;
         typedef        std::string::iterator itstr;
-        
         typedef std::map<std::string , double>::iterator  itmap ;
     public:
         void csv_loader()
@@ -151,30 +150,34 @@ class DB
                 }
                 itmap it = database.upper_bound(date);
                 
-                if (it != database.begin() || it->first != date)
-                    --it;
+                if (it == database.begin())
+                {
+                    std::cerr << "ERROR: no earlier date available" << std::endl;
+                    continue;
+                }
+                --it;
                 std::cout << date << " => " << value << " = " << it->second * val << std::endl;
             }
         }
-        DB(char *str)
+        BitcoinExchange(char *str)
         {
             csv_loader();
             process_input(str);
         }
         
-        DB(){csv_loader();};
-        DB(const DB &obj) : database(obj.database)
+        BitcoinExchange(){csv_loader();};
+        BitcoinExchange(const BitcoinExchange &obj) : database(obj.database)
         {
         }
 
-        DB &operator=(const DB &obj)
+        BitcoinExchange &operator=(const BitcoinExchange &obj)
         {
             if(&obj != this)
                 this->database = obj.database ;
             return *this ;
         }
 
-        ~DB(){}
+        ~BitcoinExchange(){}
 
         void valid_key()
         {

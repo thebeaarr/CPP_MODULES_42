@@ -11,9 +11,8 @@ int main(int ac , char **av)
 
     try
     {
-        DB db(av[1]);
+         BitcoinExchange db(av[1]);
         db.valid_key();
-        // db.printer();
     
 
     }
