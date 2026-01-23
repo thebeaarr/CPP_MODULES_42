@@ -3,14 +3,14 @@ CXXFLAGS= -Wall -Werror -Wextra --std=c++98
 
 
 
-NAME=btc 
+NAME=RPN
 
 
 
-SRC= main.cpp BitcoinExchange.cpp
+SRC= main.cpp RPN.cpp
 
 OBJ = $(SRC:.cpp=.o)
-HEADER = BitcoinExchange.hpp
+HEADER = RPN.hpp
 
 
 
