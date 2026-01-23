@@ -13,7 +13,8 @@ int main(int ac , char **av)
     {
         DB db(av[1]);
         db.valid_key();
-        db.printer();
+        // db.printer();
+    
 
     }
     catch(std::exception &e)
