@@ -19,8 +19,6 @@ all: $(NAME)
 $(NAME) : $(OBJ) $(HEADER)
 	$(CXX) $(OBJ) -o $(NAME)
 
-
-
 %.o : %.cpp
 	$(CXX) -c $< -o $@
 
