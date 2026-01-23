@@ -37,7 +37,7 @@ void PmergeMe::valid_expr()
 void PmergeMe::get_data()
 {
     std::stringstream ss(expr);
-    unsigned int number; 
+    long number; 
     while(ss >> number)
     {
         data.push_back(number);
