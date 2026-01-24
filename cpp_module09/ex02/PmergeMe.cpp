@@ -19,8 +19,6 @@ PmergeMe::~PmergeMe(){}
 
 
 
-
-
 void PmergeMe::valid_expr()
 {
     itstr it = expr.begin();
@@ -31,16 +29,45 @@ void PmergeMe::valid_expr()
     }
 }
 
-
-
-
 void PmergeMe::get_data()
 {
     std::stringstream ss(expr);
-    long number; 
-    while(ss >> number)
+    long value;
+
+    while (ss >> value)
     {
-        data.push_back(number);
-        std::cout << number << std::endl ;
+        if (value <= 0)
+            throw std::runtime_error("ERROR");
+
+        if (value > INT_MAX)
+            throw std::runtime_error("ERROR");
+
+        data.push_back(static_cast<int>(value));
+    }
+
+    if (data.empty())
+        throw std::runtime_error("ERROR");
+}
+
+
+void PmergeMe::printer()
+{
+    itvec it = data.begin();
+    for(; it != data.end(); ++it)
+        std::cout << *it  << " "; 
+}
+
+
+
+
+void PmergeMe::fordjohnson()
+{
+    int n = data.size();
+    int Npairs = n / 2 ;
+    std::vector<std::pair<int , int> > vecpairs ;
+
+    for(int i = 0 ; i < Npairs ; i++)
+    {
+        unsigned int a = 
     }
 }

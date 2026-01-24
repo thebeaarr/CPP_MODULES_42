@@ -19,10 +19,10 @@ int main(int ac, char **av)
 
         PmergeMe a(input);
         a.valid_expr();a.get_data();
+        a.printer();
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    
 }
