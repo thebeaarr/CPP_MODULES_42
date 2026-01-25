@@ -28,31 +28,35 @@ void PmergeMe::valid_expr()
             throw std::runtime_error("ERROR");
     }
 }
-void PmergeMe::compare_pairs(std::vector<std::pair<unsigned int, unsigned int> >& pairs, bool& has_straggler,unsigned int& straggler)
+void PmergeMe::compare_pairs(
+    const std::vector<unsigned int>& input,
+    std::vector<std::pair<unsigned int, unsigned int> >& pairs,
+    bool& has_straggler,
+    unsigned int& straggler)
 {
     size_t i = 0;
-    for (; i + 1 < data.size(); i += 2)
+    for (; i + 1 < input.size(); i += 2)
     {
-        if (data[i] > data[i + 1])
-            pairs.push_back(std::make_pair(data[i], data[i + 1]));
+        if (input[i] > input[i + 1])
+            pairs.push_back(std::make_pair(input[i], input[i + 1]));
         else
-            pairs.push_back(std::make_pair(data[i + 1], data[i]));
+            pairs.push_back(std::make_pair(input[i + 1], input[i]));
     }
 
-    has_straggler = (data.size() % 2);
+    has_straggler = (input.size() % 2 != 0);
     if (has_straggler)
-        straggler = data.back();
+        straggler = input.back();
 }
 
 
-void PmergeMe::large(std::vector<unsigned int> & S , std::vector<std::pair<unsigned int , unsigned int > >  const & pairs)
+
+void PmergeMe::large(
+    std::vector<unsigned int>& S,
+    const std::vector<std::pair<unsigned int, unsigned int> >& pairs)
 {
-
-    itpair it = pairs.begin() ;
-    for( ; it != pairs.end() ; ++it)
-        S.push_back(it->first);
+    for (size_t i = 0; i < pairs.size(); ++i)
+        S.push_back(pairs[i].first);
 }
-
 
 
 void binary_insert(std::vector<unsigned int>& chain, unsigned int value)
@@ -63,28 +67,56 @@ void binary_insert(std::vector<unsigned int>& chain, unsigned int value)
 }
 
 
-void PmergeMe::fordjohnson(std::vector<unsigned int> &data)
+
+void PmergeMe::fordjohnson(std::vector<unsigned int>& data)
 {
-    std::cout <<"size : " <<  data.size() << std::endl ;
-    if(data.size() <= 2)
-        return ;
-    bool has_straggler ;
-    unsigned int straggler ;
-    std::vector< std::pair<unsigned int ,unsigned  int> >   pairs ;
-    compare_pairs(pairs, has_straggler ,  straggler) ;
-    std::vector<unsigned int> S  ;
-    large(S  , pairs);
-    fordjohnson(S);
-    std::vector<unsigned int> main_chain ;
-    main_chain.push_back(pairs[0].second);
-    for(int i  = 0 ; i < S.size(); i++)
-        main_chain.push_back(S[i]);        
-    for(int i = 0 ; i < pairs.size() ; i++)
-        binary_insert(main_chain ,pairs[i].second);
-    binary_insert(main_chain , straggler);
+    if (data.size() <= 1)
+        return;
+
+    bool has_straggler = false;
+    unsigned int straggler = 0;
+
+    std::vector<std::pair<unsigned int, unsigned int> > pairs;
+    compare_pairs(data, pairs, has_straggler, straggler);
     
+    std::vector<unsigned int> S;
+    large(S, pairs);
+    fordjohnson(S);
+    
+    std::vector<unsigned int> main_chain;
+    
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        if (pairs[i].first == S[0])
+        {
+            main_chain.push_back(pairs[i].second);
+            break;
+        }
+    }
+
+    for (size_t i = 0; i < S.size(); ++i)
+        main_chain.push_back(S[i]);
+
+    for (size_t i = 1; i < S.size(); ++i) {
+    std::vector<unsigned int> pend;
+        for (size_t j = 0; j < pairs.size(); ++j) {
+            if (pairs[j].first == S[i]) {
+                pend.push_back(pairs[j].second);
+                break;
+            }
+        }
+    }
+
+    for (size_t i = 0; i < pend.size(); ++i)
+        binary_insert(main_chain, pend[i]);
+    
+    if (has_straggler)
+        binary_insert(main_chain, straggler);
+            
+    data = main_chain;
 }
 
+    
 
 void PmergeMe::get_data()
 {

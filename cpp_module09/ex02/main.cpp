@@ -22,6 +22,7 @@ int main(int ac, char **av)
         a.printer();
         std::cout << std::endl ;
         a.algo();
+        a.printer();
     }
     catch(const std::exception& e)
     {
