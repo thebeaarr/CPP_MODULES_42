@@ -40,7 +40,7 @@ void BitcoinExchange::valid_key()
             throw std::runtime_error("ERROR: invalid key    : '" + it->first + "'");
         }
         if(YYYY < 2009 || (YYYY == 2009 && MM == 1 && DD < 3) || (MM < 1 || MM > 12 ))
-            throw std::runtime_error("ERROR: invalid key    : '" + it->first+ "'");
+            throw std::runtime_error("ERROR: invalid key    : '" + it->first + "'");
 
         int days_in_month[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         if(DD > days_in_month[MM -1 ] || DD < 1  )

@@ -20,6 +20,8 @@ int main(int ac, char **av)
         PmergeMe a(input);
         a.valid_expr();a.get_data();
         a.printer();
+        std::cout << std::endl ;
+        a.algo();
     }
     catch(const std::exception& e)
     {
