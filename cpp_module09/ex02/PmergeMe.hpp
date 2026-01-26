@@ -1,42 +1,53 @@
-#pragma once
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
+
 #include <iostream>
-#include <algorithm>
-#include <sstream>
 #include <vector>
+#include <deque>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <stdexcept>
 #include <climits>
+#include <ctime>
+#include <utility>
+
+typedef std::vector<unsigned int>::iterator itvec;
+typedef std::deque<unsigned int>::iterator itdeque;
+typedef std::string::iterator itstr;
 
 class PmergeMe
 {
-	private:
-		std::string expr;
-		size_t _count_com;
-		typedef std::string::iterator itstr;
-		typedef std::vector<std::pair<unsigned int, unsigned int> >::const_iterator itpair;
-		typedef std::vector<unsigned int>::iterator itvec;
-		std::vector<unsigned int> data;
-		typedef std::vector<std::pair<unsigned int, unsigned int> >::iterator itpairs;
-		
-		void compare_pairs(const std::vector<unsigned int>& input, 
-		                   std::vector<std::pair<unsigned int, unsigned int> >& pairs,
-		                   bool& has_straggler,
-		                   unsigned int& straggler);
-		void large(std::vector<unsigned int> &S, 
-		          std::vector<std::pair<unsigned int, unsigned int> > const & pairs);
-		
-		// Add these for Jacobsthal
-		size_t jacobsthal(size_t n);
-		std::vector<size_t> generate_jacobsthal_sequence(size_t n);
+private:
+	std::string expr;
+	std::vector<unsigned int> data_vec;
+	std::deque<unsigned int> data_deque;
+	size_t _count_com;
 
-	public: 
-		PmergeMe();
-		PmergeMe(std::string &cp);
-		PmergeMe(const PmergeMe &obj);
-		~PmergeMe();
+	void valid_expr();
+	void get_data();
 
-		PmergeMe &operator=(const PmergeMe &obj);
-		void algo();
-		void fordjohnson(std::vector<unsigned int> &data);
-		void valid_expr();
-		void get_data();
-		void printer();
+	size_t jacobsthal(size_t n);
+	std::vector<size_t> generate_jacobsthal_sequence(size_t n);
+
+	void fordjohnson_vector(std::vector<unsigned int>& data);
+	
+	void fordjohnson_deque(std::deque<unsigned int>& data);
+
+	void binary_insert_vector(std::vector<unsigned int>& chain, unsigned int value);
+	
+	void binary_insert_deque(std::deque<unsigned int>& chain, unsigned int value);
+
+public:
+	PmergeMe();
+	PmergeMe(std::string &cp);
+	PmergeMe(const PmergeMe &obj);
+	PmergeMe &operator=(const PmergeMe &obj);
+	~PmergeMe();
+
+	void algo();
+	void print_before();
+	void print_after();
 };
+
+#endif

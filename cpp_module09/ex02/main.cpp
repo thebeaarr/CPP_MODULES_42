@@ -1,31 +1,32 @@
 #include "PmergeMe.hpp"
 
-
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
+	if (argc < 2)
+	{
+		std::cerr << "Usage: ./PmergeMe [positive integers...]" << std::endl;
+		std::cerr << "Example: ./PmergeMe 3 5 9 7 4" << std::endl;
+		return 1;
+	}
 
-    try
-    {
-    if(ac == 1)
-        throw std::runtime_error("USAGE : ./PmergeMe [sequence of positive numbers.]");
-    
-        std::string input;
-        for (int i = 1; i < ac; ++i)
-        {
-            if (i > 1)
-                input += ' ';
-            input += av[i];
-        }
+	try
+	{
+		std::string input;
+		for (int i = 1; i < argc; i++)
+		{
+			if (i > 1)
+				input += " ";
+			input += argv[i];
+		}
 
-        PmergeMe a(input);
-        a.valid_expr();a.get_data();
-        a.printer();
-        std::cout << std::endl ;
-        a.algo();
-        a.printer();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+		PmergeMe sorter(input);
+		sorter.algo();
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
+
+	return 0;
 }
