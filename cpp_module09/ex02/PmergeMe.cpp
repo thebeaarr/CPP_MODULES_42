@@ -1,14 +1,11 @@
 #include "PmergeMe.hpp"
 
-// ============================================================================
-// CONSTRUCTORS & DESTRUCTOR
-// ============================================================================
 
-PmergeMe::PmergeMe() : _count_com(0) {}
+PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(std::string &cp) : expr(cp), _count_com(0) {}
+PmergeMe::PmergeMe(std::string &cp) : expr(cp) {}
 
-PmergeMe::PmergeMe(const PmergeMe &obj) : expr(obj.expr), _count_com(0) {}
+PmergeMe::PmergeMe(const PmergeMe &obj) : expr(obj.expr) {}
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &obj)
 {
@@ -18,10 +15,6 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &obj)
 }
 
 PmergeMe::~PmergeMe() {}
-
-// ============================================================================
-// VALIDATION & DATA PARSING
-// ============================================================================
 
 void PmergeMe::valid_expr()
 {
@@ -53,10 +46,6 @@ void PmergeMe::get_data()
 	if (data_vec.empty())
 		throw std::runtime_error("ERROR: No valid input provided");
 }
-
-// ============================================================================
-// JACOBSTHAL SEQUENCE GENERATION
-// ============================================================================
 
 size_t PmergeMe::jacobsthal(size_t n)
 {
@@ -96,8 +85,7 @@ std::vector<size_t> PmergeMe::generate_jacobsthal_sequence(size_t n)
 		
 		if (curr_jacob >= n)
 			curr_jacob = n;
-		
-		// Insert in reverse order from curr_jacob down to prev_jacob
+
 		for (size_t i = curr_jacob - 1; i > prev_jacob - 1 && i < n; --i)
 			sequence.push_back(i);
 
@@ -111,9 +99,6 @@ std::vector<size_t> PmergeMe::generate_jacobsthal_sequence(size_t n)
 	return sequence;
 }
 
-// ============================================================================
-// FORD-JOHNSON ALGORITHM - VECTOR VERSION
-// ============================================================================
 
 void PmergeMe::binary_insert_vector(std::vector<unsigned int>& chain, unsigned int value)
 {
@@ -127,11 +112,9 @@ void PmergeMe::fordjohnson_vector(std::vector<unsigned int>& data)
 	if (data.size() <= 1)
 		return;
 
-	// Handle odd-sized array (straggler)
 	bool has_straggler = (data.size() % 2 != 0);
 	unsigned int straggler = has_straggler ? data.back() : 0;
 
-	// Step 1: Create pairs and compare
 	std::vector<std::pair<unsigned int, unsigned int> > pairs;
 	for (size_t i = 0; i + 1 < data.size(); i += 2)
 	{
@@ -143,16 +126,11 @@ void PmergeMe::fordjohnson_vector(std::vector<unsigned int>& data)
 
 	if (pairs.empty())
 		return;
-
-	// Step 2: Extract larger elements
 	std::vector<unsigned int> larger;
 	for (size_t i = 0; i < pairs.size(); ++i)
 		larger.push_back(pairs[i].first);
-
-	// Step 3: Recursively sort larger elements
 	fordjohnson_vector(larger);
 
-	// Step 4: Build main chain starting with first small element
 	std::vector<unsigned int> main_chain;
 	for (size_t i = 0; i < pairs.size(); ++i)
 	{
@@ -162,11 +140,8 @@ void PmergeMe::fordjohnson_vector(std::vector<unsigned int>& data)
 			break;
 		}
 	}
-
-	// Add all larger elements to main chain
 	main_chain.insert(main_chain.end(), larger.begin(), larger.end());
 
-	// Step 5: Build pending list (remaining small elements)
 	std::vector<unsigned int> pend;
 	for (size_t i = 1; i < larger.size(); ++i)
 	{

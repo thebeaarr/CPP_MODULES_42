@@ -22,7 +22,6 @@ private:
 	std::string expr;
 	std::vector<unsigned int> data_vec;
 	std::deque<unsigned int> data_deque;
-	size_t _count_com;
 
 	void valid_expr();
 	void get_data();
