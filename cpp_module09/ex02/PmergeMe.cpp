@@ -111,8 +111,8 @@ void PmergeMe::fordjohnson_vector(std::vector<unsigned int>& data)
 {
 	if (data.size() <= 1)
 		return;
-
 	bool has_straggler = (data.size() % 2 != 0);
+
 	unsigned int straggler = has_straggler ? data.back() : 0;
 
 	std::vector<std::pair<unsigned int, unsigned int> > pairs;

@@ -21,6 +21,54 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj)
 }
 
 
+void BitcoinExchange::csv_loader()
+{
+    std::ifstream file("data.csv");
+    std::string line ;
+    if (!file.is_open())
+        throw std::runtime_error("ERROR: could not open data.csv");
+    while (std::getline(file, line))
+    {
+        if (line.empty())
+            continue;
+        std::stringstream ss(line);
+        std::string key, value;
+        if (!std::getline(ss, key, ','))
+            continue;
+        if (!std::getline(ss, value))
+            throw std::runtime_error("ERROR: invalid line : '" + line + "'");
+        if (key == "date" && value == "exchange_rate")
+            continue;
+        if (value.empty())
+            throw std::runtime_error("ERROR: key or value empty");
+        char *end;
+        double save = std::strtod(value.c_str(), &end);
+        if (*end != '\0')
+            throw std::runtime_error("ERROR: invalid key    : '" + key + "'");
+        database[key] = save;
+    }
+    file.close();
+}
+
+
+void BitcoinExchange::trim(std::string &s)
+{
+    std::size_t start = 0;
+    while (start < s.size() && std::isspace(static_cast<unsigned char>(s[start])))
+        ++start;
+    std::size_t end = s.size();
+    while (end > start && std::isspace(static_cast<unsigned char>(s[end - 1])))
+        --end;
+    s = s.substr(start, end - start);
+}
+void BitcoinExchange::printer()
+{                           
+    std::cout << "date      |  value" << std::endl ;
+    for(itmap it = database.begin(); it != database.end() ; ++it)
+    {
+        std::cout << it->first << " " << it->second << std::endl ;
+    }
+}
 
 BitcoinExchange::~BitcoinExchange(){}
 

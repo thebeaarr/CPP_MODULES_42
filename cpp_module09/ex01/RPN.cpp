@@ -56,7 +56,9 @@ void RPN::reverse_polish_notation()
         }
         if(!std::isspace(*it))
             throw std::runtime_error("ERROR");
-    }
+    } 
+    if(operands.size() != 1)
+        throw std::runtime_error("ERROR"); 
     std::cout << operands.top() << std::endl;
 }
 
