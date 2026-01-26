@@ -8,17 +8,26 @@
 class PmergeMe
 {
 	private:
-		std::string expr ;
-		size_t _count_com ;
+		std::string expr;
+		size_t _count_com;
 		typedef std::string::iterator itstr;
-		typedef std::vector<std::pair<unsigned int , unsigned int > >::const_iterator itpair;
+		typedef std::vector<std::pair<unsigned int, unsigned int> >::const_iterator itpair;
 		typedef std::vector<unsigned int>::iterator itvec;
 		std::vector<unsigned int> data;
-		typedef std::vector<std::pair<unsigned int , unsigned int > >::iterator itpairs ;
-		void compare_pairs(const std::vector<unsigned int>& input, std::vector<std::pair<unsigned int, unsigned int> >& pairs,bool& has_straggler,unsigned int& straggler);
-		void large(std::vector<unsigned int> &S , std::vector<std::pair<unsigned int , unsigned int> > const &  pairs);
+		typedef std::vector<std::pair<unsigned int, unsigned int> >::iterator itpairs;
+		
+		void compare_pairs(const std::vector<unsigned int>& input, 
+		                   std::vector<std::pair<unsigned int, unsigned int> >& pairs,
+		                   bool& has_straggler,
+		                   unsigned int& straggler);
+		void large(std::vector<unsigned int> &S, 
+		          std::vector<std::pair<unsigned int, unsigned int> > const & pairs);
+		
+		// Add these for Jacobsthal
+		size_t jacobsthal(size_t n);
+		std::vector<size_t> generate_jacobsthal_sequence(size_t n);
 
-		public: 
+	public: 
 		PmergeMe();
 		PmergeMe(std::string &cp);
 		PmergeMe(const PmergeMe &obj);
@@ -30,5 +39,4 @@ class PmergeMe
 		void valid_expr();
 		void get_data();
 		void printer();
-
 };
